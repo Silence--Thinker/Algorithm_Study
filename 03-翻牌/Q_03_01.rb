@@ -6,7 +6,20 @@ def reversal ()
     n = 100
     (1..n).each {|i|
         flag = false
-        (2..n).each{|j|
+        (1..n).each{|j|
+            if i % j == 0       
+                flag = !flag
+            end
+        }
+        puts "#{i}" if flag
+    }
+end
+
+def reversal_02 ()
+    n = 100
+    (1..n).each {|i|
+        flag = false
+        (2..n-1).each{|j|
             if i % j == 0       
                 flag = !flag
             end
@@ -33,5 +46,8 @@ def reversal_01 ()
     }
 end
 
+# 算法逐渐优化
+# reversal_01()
+# reversal_02()
 reversal()
-reversal_01()
+
