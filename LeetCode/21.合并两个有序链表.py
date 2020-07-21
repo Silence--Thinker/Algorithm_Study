@@ -17,23 +17,18 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        p1, p2 = l1, l2
-        p = None
-        while p1 or p2:
-            temp = None
-            if p1.val > p2.val:
-                temp = p2
-                p2 = p2.next
+        pre = ListNode(-1)
+        p = pre
+        while l1 and l2:
+            if l1.val > l2.val:
+                p.next = l2
+                l2 = l2.next
             else:
-                temp = p1
-                p1 = p1.next
-            if p is None:
-                p = temp
-            else:
-                p.val = temp
-                p.next = temp
-        p.next = None
-        return p
+                p.next = l1
+                l1 = l1.next
+            p = p.next
+        p.next = l2 if l1 is None else l1
+        return pre.next
 
 # @lc code=end
 
